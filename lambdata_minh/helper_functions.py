@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import math
 
 def null_count(df):
     """
@@ -56,9 +57,9 @@ def train_test_split(df, frac):
     """
     #type(frac)==float
         
-    length = int(len(df)*frac)
-    df1 = df[:length].copy()
-    df2 = df[length:].copy()
+    length = math.ceil(len(df)*frac)
+    df1 = df.iloc[:length].copy()
+    df2 = df.iloc[length:].copy()
     return df1, df2
 
 def randomize(df, seed):
@@ -90,33 +91,38 @@ def randomize(df, seed):
     df = df.sample(frac=1,random_state=seed)
     return df
 
-# def addy_split(addy_series):
-#     """
-#     Split addresses into three columns (df['city'], df['state'], and df['zip']).
+def addy_split(addy_series):
+    """
+    Split addresses into three columns (df['city'], df['state'], and df['zip']).
     
-#     Args:
-#         addy_series ([type]): pandas Series
+    Args:
+        addy_series ([type]): pandas Series
 
-#     Example Input (addy_series = pd.Series):
-#     > | address                                    |
-#     > | ------------------------------------------ |
-#     > | 890 Jennifer Brooks\nNorth Janet, WY 24785 |
-#     > | 8394 Kim Meadow\nDarrenville, AK 27389     |
-#     > | 379 Cain Plaza\nJosephburgh, WY 06332      |
-#     > | 5303 Tina Hill\nAudreychester, VA 97036    |
+    Example Input (addy_series = pd.Series):
+    > | address                                    |
+    > | ------------------------------------------ |
+    > | 890 Jennifer Brooks\nNorth Janet, WY 24785 |
+    > | 8394 Kim Meadow\nDarrenville, AK 27389     |
+    > | 379 Cain Plaza\nJosephburgh, WY 06332      |
+    > | 5303 Tina Hill\nAudreychester, VA 97036    |
 
-#     Function:
-#     > `addy_split(addy_series)`
+    Function:
+    > `addy_split(addy_series)`
 
-#     Expected Output (pd.Dataframe): 
-#     > | city          | state       | zip         |
-#     > | ------------- | ----------- | ----------- |
-#     > | North Janet   | WY          | 24785       |
-#     > | Darrenville   | AK          | 27389       |
-#     > | Josephburgh   | WY          | 06332       |
-#     > | Audreychester | VA          | 97036       |
+    Expected Output (pd.Dataframe): 
+    > | city          | state       | zip         |
+    > | ------------- | ----------- | ----------- |
+    > | North Janet   | WY          | 24785       |
+    > | Darrenville   | AK          | 27389       |
+    > | Josephburgh   | WY          | 06332       |
+    > | Audreychester | VA          | 97036       |
 
-#     """
-#     return addy_series
+    """
+    df = pd.DataFrame(addy_series)
+    df['city'] = df['address'].apply(lambda x: x.split('\n')[-1].split(',')[0])
+    df['state'] = df['address'].apply(lambda x: x.split('\n')[-1].split(',')[-1].strip().split(' ')[-2])
+    df['zip'] = df['address'].apply(lambda x: x.split('\n')[-1].split(',')[-1].strip().split(' ')[-1])
+    df = df.drop(columns='address')
+    return df
 
     
