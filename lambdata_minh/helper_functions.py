@@ -54,11 +54,12 @@ def train_test_split(df, frac):
         )
 
     """
-    #assert type(frac)==float
+    #type(frac)==float
+        
     length = int(len(df)*frac)
     df1 = df[:length].copy()
     df2 = df[length:].copy()
-    return (df1,df2)
+    return df1, df2
 
 def randomize(df, seed):
     """
