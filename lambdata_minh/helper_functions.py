@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import math
 
+
 def null_count(df):
     """
     Check a dataframe for nulls and return the number of missing values.
@@ -24,13 +25,17 @@ def null_count(df):
     """
     return df.isna().sum().sum()
 
+
 def train_test_split(df, frac):
+
     """
-    Create a Train/Test split function for a dataframe and returns both the Training and Testing sets. 
+    Create a Train/Test split function for a dataframe and
+    returns both the Training and Testing sets.
 
     Args:
         df ([type]): pandas dataframe
-        frac ([type]): referes to the precent of data you would like to set aside for training.
+        frac ([type]): referes to the precent of data you would like to set
+        aside for training.
 
     Example Input (df = pd.DataFrame):
     > | column 0    | column 1    | column 2    |
@@ -44,23 +49,23 @@ def train_test_split(df, frac):
 
     Expected Output (tuple of two dataframes):
         (
-    > | column 0    | column 1    | column 2    | 
+    > | column 0    | column 1    | column 2    |
     > | ----------- | ----------- | ----------- |
     > | 3           | 4           | 5           |
         ,
-    > | column 0    | column 1    | column 2    | 
-    > | ----------- | ----------- | ----------- | 
+    > | column 0    | column 1    | column 2    |
+    > | ----------- | ----------- | ----------- |
     > | 0           | 1           | 2           |
     > | 6           | 7           | 8           |
         )
 
     """
-    #type(frac)==float
-        
+    # type(frac)==float
     length = math.ceil(len(df)*frac)
     df1 = df.iloc[:length].copy()
     df2 = df.iloc[length:].copy()
     return df1, df2
+
 
 def randomize(df, seed):
     """
@@ -86,10 +91,10 @@ def randomize(df, seed):
     > | 2           | 5           | 8           |
     > | 0           | 3           | 6           |
     > | 1           | 4           | 7           |
-
     """
-    df = df.sample(frac=1,random_state=seed)
+    df = df.sample(frac=1, random_state=seed)
     return df
+
 
 def addy_split(addy_series):
     """
@@ -124,5 +129,3 @@ def addy_split(addy_series):
     df['zip'] = df['address'].apply(lambda x: x.split('\n')[-1].split(',')[-1].strip().split(' ')[-1])
     df = df.drop(columns='address')
     return df
-
-    
