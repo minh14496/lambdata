@@ -130,5 +130,5 @@ dmypy.json
 
 
 # Ignore csv
-data/
+#data/
 .vscode/
