@@ -1,12 +1,11 @@
-Lambdata - A collection of Data Science helper function 
-# Project name
+# Lambdata - A collection of Data Science helper function 
 
-<!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
+
 ![GitHub repo size](https://img.shields.io/github/repo-size/minh14496/lambdata)
-![GitHub contributors](https://img.shields.io/github/contributors/scottydocs/README-template.md)
-![GitHub stars](https://img.shields.io/github/stars/scottydocs/README-template.md?style=social)
-![GitHub forks](https://img.shields.io/github/forks/scottydocs/README-template.md?style=social)
-![Twitter Follow](https://img.shields.io/twitter/follow/scottydocs?style=social)
+![GitHub contributors](https://img.shields.io/github/contributors/minh14496/lambdata)
+![GitHub license](https://img.shields.io/github/license/minh14496/lambdata)
+![GitHub forks](https://img.shields.io/github/forks/minh14496/lambdata?style=social)
+![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FMinhNhatNguyen3)
 
 Project name is a `<utility/tool/feature>` that allows `<insert_target_audience>` to do `<action/task_it_does>`.
 
