@@ -11,7 +11,7 @@ class Product:
         self.weight = weight
         self.flammability = flammability
         self.identifier = identifier
-        
+
     def stealability(self):
         """
         stealability Determine the stealability of a product by
@@ -22,11 +22,11 @@ class Product:
         """
         steal_ratio = self.price/self.weight
         if steal_ratio < 0.5:
-            return f"Not so stealable..."
+            return "Not so stealable..."
         elif steal_ratio >= 1.0:
-            return f"Very stealable!"
+            return "Very stealable!"
         else:
-            return f'Kinda stealable.'
+            return 'Kinda stealable.'
 
     def explode(self):
         """
@@ -38,11 +38,11 @@ class Product:
         """
         baboom = self.flammability * self.weight
         if baboom < 10:
-            return f'...fizzle.'
+            return '...fizzle.'
         elif baboom >= 50:
-            return f'...BABOOM!!'
+            return '...BABOOM!!'
         else:
-            return f'...boom!'
+            return '...boom!'
 
 
 class BoxingGlove(Product):
@@ -54,10 +54,10 @@ class BoxingGlove(Product):
             name, price=price, weight=weight,
             flammability=flammability, identifier=identifier
                 )
-                
+
     def explode(self):
         """Explode function only return one outcome in this class"""
-        return f"...it's a glove."
+        return "...it's a glove."
 
     def punch(self):
         """
@@ -67,8 +67,8 @@ class BoxingGlove(Product):
             [string]: A message whether a glove is good for boxing
         """
         if self.weight < 5:
-            return f"That tickles."
+            return "That tickles."
         elif self.weight >= 15:
-            return f"OUCH!"
+            return "OUCH!"
         else:
-            return f"Hey that hurt!"
+            return "Hey that hurt!"

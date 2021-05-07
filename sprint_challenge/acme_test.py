@@ -1,6 +1,12 @@
 import pytest
-from acme import BoxingGlove, Product
+from acme import Product, BoxingGlove
 from acme_report import generate_products, ADJECTIVES, NOUNS
+
+
+@pytest.fixture
+def new_product():
+    """Create Product with different parameter value"""
+    return Product(name='Test Product', price=20, weight=30, flammability=2)
 
 
 def test_default_product_price():
@@ -27,6 +33,12 @@ def test_explode():
     assert prod.explode() == '...boom!'
     prod = Product('Test Product', weight=30, flammability=2.5)
     assert prod.explode() == '...BABOOM!!'
+
+
+def test_punch():
+    """"Test punch function from acme"""
+    glove = BoxingGlove('Glove', weight=15)
+    assert glove.punch() == 'OUCH!'
 
 
 def test_default_num_products():
