@@ -7,44 +7,54 @@
 ![GitHub forks](https://img.shields.io/github/forks/minh14496/lambdata?style=social)
 ![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FMinhNhatNguyen3)
 
-Project name is a `<utility/tool/feature>` that allows `<insert_target_audience>` to do `<action/task_it_does>`.
+Lambdata is a `<utility>` that allows `<data scientist>` to do `<some panda functions faster >`.
 
-Additional line of information text about what the project does. Your introduction should be around 2 or 3 sentences. Don't go overboard, people won't read it.
+Lambdata use pandas and sklearn libraries to speed up your data wrangling speed. \
+Instead of having to write a long code or using different libraries, you can achieve what you want to do in 1 line of code \
+For example, you can find the number of Null value in DataFrame with null_count() functions \
+Or split an address into three different columns in DataFrame with addy_split() 
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 <!--- These are just example requirements. Add, duplicate or remove as required --->
-* You have installed the latest version of `<coding_language/dependency/requirement_1>`
-* You have a `<Windows/Linux/Mac>` machine. State which OS is supported/which is not.
-* You have read `<guide/link/documentation_related_to_project>`.
+* You have installed the latest version of `<Python3.8>`
+* You have installed the latest version of `<Pandas>`
+* You have installed the latest version of `<Numpy>`
+* You have installed the latest version of `<Sklearn>`
+* You have a `<Windows/Linux/Mac>` machine.
 
-## Installing <project_name>
+## Installing Lambdata
 
-To install <project_name>, follow these steps:
+To install Lambdata, follow these steps:
 
-Linux and macOS:
+Windows/MacOS: 
 ```
-<install_command>
-```
-
-Windows:
-```
-<install_command>
-```
-## Using <project_name>
-
-To use <project_name>, follow these steps:
-
-```
-<usage_example>
+pip install -i https://test.pypi.org/simple/ lambdata-minh-0.0.2
 ```
 
-Add run commands and examples you think users will find useful. Provide an options reference for bonus points!
+Linux:
+```
+pip3 install -i https://test.pypi.org/simple/ lambdata-minh-0.0.2
+```
+## Using Lambdata
 
-## Contributing to <project_name>
+To use Lambdata, follow these steps:
+
+```
+from lambdata_minh import helper_functions as hf
+```
+```
+from lambdata_minh.helper_functions import HelperDataFrame as hdf
+```
+```
+from lambdata_minh.helper_functions import HelperSeries as hs
+```
+
+
+## Contributing to Lambdata
 <!--- If your README is long or you have some specific process or steps you want contributors to follow, consider creating a separate CONTRIBUTING.md file--->
-To contribute to <project_name>, follow these steps:
+To contribute to Lambdata, follow these steps:
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b <branch_name>`.
@@ -58,11 +68,7 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 
 Thanks to the following people who have contributed to this project:
 
-* [@scottydocs](https://github.com/scottydocs) 📖
-* [@cainwatson](https://github.com/cainwatson) 🐛
-* [@calchuchesta](https://github.com/calchuchesta) 🐛
-
-You might want to consider using something like the [All Contributors](https://github.com/all-contributors/all-contributors) specification and its [emoji key](https://allcontributors.org/docs/en/emoji-key).
+* [@minh14496](https://github.com/minh14496) 💻
 
 ## Contact
 
@@ -71,4 +77,4 @@ If you want to contact me you can reach me at <your_email@address.com>.
 ## License
 <!--- If you're not sure which open license to use see https://choosealicense.com/--->
 
-This project uses the following license: [<license_name>](<link>).
+This project uses the following license: [MIT](<https://github.com/minh14496/lambdata/blob/main/LICENSE>).
