@@ -1,6 +1,6 @@
 import pytest
 from acme import Product, BoxingGlove
-from acme_report import generate_products, ADJECTIVES, NOUNS
+from acme_report import generate_products, ADJECTIVES, NOUNS, inventory_report
 
 
 @pytest.fixture
@@ -9,30 +9,26 @@ def new_product():
     return Product(name='Test Product', price=20, weight=30, flammability=2)
 
 
+@pytest.fixture
+def products():
+    """Generate a bunch of product with default value"""
+    return generate_products()
+
+
 def test_default_product_price():
     """Test default product price being 10."""
     prod = Product('Test Product')
     assert prod.price == 10
 
 
-def test_stealability():
+def test_stealability(new_product):
     """Test stealability from acme"""
-    prod = Product('Test Product', price=10, weight=10)
-    assert prod.stealability() == 'Very stealable!'
-    prod = Product('Test Product', price=10, weight=30)
-    assert prod.stealability() == 'Not so stealable...'
-    prod = Product('Test Product', price=10, weight=20)
-    assert prod.stealability() == 'Kinda stealable.'
+    assert new_product.stealability() == 'Kinda stealable.'
 
 
-def test_explode():
+def test_explode(new_product):
     """Test explode function from acme"""
-    prod = Product('Test Product', weight=10, flammability=0.5)
-    assert prod.explode() == '...fizzle.'
-    prod = Product('Test Product', weight=20, flammability=2)
-    assert prod.explode() == '...boom!'
-    prod = Product('Test Product', weight=30, flammability=2.5)
-    assert prod.explode() == '...BABOOM!!'
+    assert new_product.explode() == '...BABOOM!!'
 
 
 def test_punch():
@@ -41,26 +37,42 @@ def test_punch():
     assert glove.punch() == 'OUCH!'
 
 
-def test_default_num_products():
+def test_default_num_products(products):
     """
     Test the default number of products generate by
     generate_products function from acme_test
     """
-    products = generate_products()
     assert len(products) == 30
 
 
-def test_legal_names():
+def test_legal_names(products):
     """
     test_legal_names Test if the products name are valid possible names
     to genertate(adjecive, space, noun) from the list of possible words
     """
-    products = generate_products()
     for prod in products:
         assert prod.name.split(' ')[0] in ADJECTIVES
         assert prod.name.split(' ')[1] in NOUNS
 
 
-def test_inventory_report():
-    # TODO create a test for inventory report
-    pass
+def test_inventory_report(capfd):
+    names = set()
+    total_price = 0
+    total_weight = 0
+    total_flammability = 0.0
+    products = generate_products()
+    for product in products:
+        names.add(product.name)
+        total_price += product.price
+        total_weight += product.weight
+        total_flammability += product.flammability
+
+    avg_price = total_price / len(products)
+    avg_weight = total_weight / len(products)
+    avg_flammability = total_flammability / len(products)
+    inventory_report(products)
+    out, err = capfd.readouterr()
+    assert str(len(names)) in out
+    assert str(avg_price) in out
+    assert str(avg_weight) in out
+    assert str(avg_flammability) in out

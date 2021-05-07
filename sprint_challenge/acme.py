@@ -18,7 +18,10 @@ class Product:
         calculating the price divided by the weight
 
         Returns:
-            [string]: A message whether a product stealable or not
+            [string]: a message: if the ratio is less than 0.5
+        return "Not so stealable...", if it is greater or equal
+        to 0.5 but less than 1.0 return "Kinda stealable.",
+        and otherwise return "Very stealable!"
         """
         steal_ratio = self.price/self.weight
         if steal_ratio < 0.5:
@@ -34,7 +37,10 @@ class Product:
         calculating the flammability times the weight
 
         Returns:
-            [string]: A message whether a product can explode
+            [string]: a message: if the product is less than 10 return
+        "...fizzle.", if it is greater or equal to 10 but less
+        than 50 return "...boom!", and otherwise
+        return "...BABOOM!!"
         """
         baboom = self.flammability * self.weight
         if baboom < 10:
@@ -64,7 +70,9 @@ class BoxingGlove(Product):
         punch Determine if a glove is good to punch
 
         Returns:
-            [string]: A message whether a glove is good for boxing
+            [string]: "That tickles." if the weight is below 5,
+        "Hey that hurt!" if the weight is greater or equal to 5
+        but less than 15, and "OUCH!" otherwise
         """
         if self.weight < 5:
             return "That tickles."

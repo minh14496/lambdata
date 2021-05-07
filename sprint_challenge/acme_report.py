@@ -4,7 +4,6 @@ from acme import Product
 # Useful to use with random.sample to generate names
 ADJECTIVES = ['Awesome', 'Shiny', 'Impressive', 'Portable', 'Improved']
 NOUNS = ['Anvil', 'Catapult', 'Disguise', 'Mousetrap', '???']
-s = set()
 
 
 def generate_products(num_products=30):
@@ -23,6 +22,7 @@ def generate_products(num_products=30):
 
 def inventory_report(products):
     """Print out the reports for the company inventory"""
+    s = set()
     price = []
     weight = []
     flammability = []
