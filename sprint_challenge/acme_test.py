@@ -55,12 +55,11 @@ def test_legal_names(products):
         assert prod.name.split(' ')[1] in NOUNS
 
 
-def test_inventory_report(capfd):
+def test_inventory_report(capfd, products):
     names = set()
     total_price = 0
     total_weight = 0
     total_flammability = 0.0
-    products = generate_products()
     for product in products:
         names.add(product.name)
         total_price += product.price
