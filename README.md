@@ -7,7 +7,7 @@
 ![GitHub forks](https://img.shields.io/github/forks/minh14496/lambdata?style=social)
 ![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FMinhNhatNguyen3)
 
-Lambdata is a `<utility>` that allows `<data scientist>` to do `<some panda functions faster >`.
+Lambdata is a `<package>` that allows `<data scientist>` to do `<some panda functions faster >`.
 
 Lambdata use pandas and sklearn libraries to speed up your data wrangling speed. \
 Instead of having to write a long code or using different libraries, you can achieve what you want to do in 1 line of code \
